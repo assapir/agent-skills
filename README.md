@@ -27,3 +27,7 @@ Systematic debugging methodology for tracking down issues with structured approa
 ### security-review
 
 Security review checklist based on OWASP Top 10, covering injection, authentication, access control, and more.
+
+### skill-creator
+
+Guide for creating new skills with minimal interaction. Includes Python scripts for initialization, validation, and packaging. (From [anthropics/skills](https://github.com/anthropics/skills))
