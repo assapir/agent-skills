@@ -19,3 +19,11 @@ Comprehensive GitHub CLI reference covering repositories, issues, PRs, Actions, 
 ### using-git-worktrees
 
 Guide for creating isolated git worktrees for feature work with smart directory selection.
+
+### debug
+
+Systematic debugging methodology for tracking down issues with structured approach and common bug patterns.
+
+### security-review
+
+Security review checklist based on OWASP Top 10, covering injection, authentication, access control, and more.
