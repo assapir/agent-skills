@@ -31,3 +31,7 @@ Security review checklist based on OWASP Top 10, covering injection, authenticat
 ### skill-creator
 
 Guide for creating new skills with minimal interaction. Includes Python scripts for initialization, validation, and packaging. (From [anthropics/skills](https://github.com/anthropics/skills))
+
+### worktree-cleanup
+
+Automated daily cleanup of dead git worktrees and merged branches. Runs on first wake/login on workdays (configurable). Includes install script for macOS launchd.
