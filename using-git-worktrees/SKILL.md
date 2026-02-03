@@ -103,7 +103,7 @@ The branch name **must** follow project conventions
 
 ### 3. Run Project Setup
 
-Auto-detect and run appropriate setup:
+Auto-detect and run appropriate setup. replace npm to any other package manager or build tool as needed, according to project files:
 
 ```bash
 # Node.js
