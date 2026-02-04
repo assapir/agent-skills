@@ -15,7 +15,7 @@ This skill enforces safe PR workflows: no force pushing, automatic lint/format d
 - **Always add new commits** instead of rewriting history
 - Use `git commit --fixup` for corrections, not `git commit --amend`
 - Never use `git push --force` or `git push -f`
-- If a rebase is needed, create a new branch instead
+- If a rebase is needed, create a new branch instead (exception: after merging master, you can stash and pop)
 
 ### 2. Never Commit to Protected Branches
 - **Always verify** you're not on `main` or `master` before committing
