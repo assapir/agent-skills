@@ -16,6 +16,10 @@ git clone git@github.com:assapir/agent-skills.git ~/.claude/skills
 
 Comprehensive GitHub CLI reference covering repositories, issues, PRs, Actions, and more.
 
+### pr-best-practices
+
+Enforces safe and consistent PR/fix workflows with automatic detection of repo-specific tooling. Includes rules for no force pushing, auto-detecting lint/format tools, keeping branches up-to-date, and running relevant tests.
+
 ### using-git-worktrees
 
 Guide for creating isolated git worktrees for feature work with smart directory selection.
