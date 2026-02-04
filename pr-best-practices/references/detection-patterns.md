@@ -84,10 +84,14 @@ make -qp 2>/dev/null | grep -E '^[a-zA-Z_-]+:' | cut -d: -f1
 
 Check for `.pre-commit-config.yaml` in repo root.
 
-### Commands
+### Automatic Execution
+
+**Pre-commit hooks run automatically on `git commit`** - no manual intervention needed. The hooks will check staged files before allowing the commit.
+
+### Manual Commands (rarely needed)
 
 ```bash
-# Run all hooks on all files
+# Run all hooks on all files (useful for initial setup or CI)
 pre-commit run --all-files
 
 # Run on specific files
@@ -141,13 +145,13 @@ pytest -k "test_function_name"
 pytest tests/unit/
 ```
 
-### Virtual Environment Detection
+### Virtual Environment / Package Manager Detection
 
-Check for:
-- `.venv/` directory
-- `venv/` directory
+Check for (in priority order):
+- `uv.lock` → use `uv run` (fast, modern package manager)
 - `poetry.lock` → use `poetry run`
 - `Pipfile.lock` → use `pipenv run`
+- `.venv/` or `venv/` directory → activate or use direct path
 
 ## Go Projects
 

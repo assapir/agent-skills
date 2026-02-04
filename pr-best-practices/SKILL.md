@@ -21,6 +21,7 @@ This skill enforces safe PR workflows: no force pushing, automatic lint/format d
 - **Always verify** you're not on `main` or `master` before committing
 - Check with: `git branch --show-current`
 - If on a protected branch, create a feature branch first
+- **Follow repo-specific rules**: Search for any existing branch protection rules or skills that define additional constraints for this repository
 
 ### 3. Keep Branch Up-to-Date
 - Before pushing, check if behind the default branch
@@ -39,67 +40,16 @@ This skill enforces safe PR workflows: no force pushing, automatic lint/format d
 
 ## Auto-Detection Logic
 
-Before running any tooling, detect the repo's tools using these patterns.
+Before running any tooling, detect the repo's tools. See `references/detection-patterns.md` for comprehensive patterns.
 
-### JavaScript/TypeScript Package Manager (CRITICAL)
+**Key principle**: Always detect the correct tool before running commands. Never assume defaults.
 
-**Never default to npm without checking lock files first:**
-
-| Lock File | Package Manager | Run Command |
-|-----------|-----------------|-------------|
-| `yarn.lock` | Yarn | `yarn <script>` |
-| `pnpm-lock.yaml` | pnpm | `pnpm <script>` |
-| `package-lock.json` | npm | `npm run <script>` |
-
-**Detection order:**
-1. Check for `yarn.lock` → use `yarn`
-2. Check for `pnpm-lock.yaml` → use `pnpm`
-3. Check for `package-lock.json` → use `npm`
-4. If no lock file but `package.json` exists → ask user which to use
-
-### package.json Scripts
-
-Look for these common scripts:
-- `lint` / `lint:fix` - Linting
-- `format` / `fmt` - Formatting
-- `check` / `typecheck` / `type-check` - Type checking
-- `test` / `test:unit` - Testing
-
-### Makefile Targets
-
-Check `Makefile` for:
-- `lint`, `check` - Linting
-- `fmt`, `format` - Formatting
-- `test`, `tests` - Testing
-
-### Pre-commit Hooks
-
-If `.pre-commit-config.yaml` exists:
-- Run `pre-commit run --all-files` for full check
-- Run `pre-commit run --files <changed-files>` for targeted check
-
-### Python Projects
-
-| Config File | Tool | Commands |
-|-------------|------|----------|
-| `ruff.toml` or `[tool.ruff]` in pyproject.toml | Ruff | `ruff check .`, `ruff format .` |
-| `[tool.black]` in pyproject.toml | Black | `black .` |
-| `[tool.pytest]` or `pytest.ini` | Pytest | `pytest` |
-| `setup.cfg` with `[flake8]` | Flake8 | `flake8` |
-
-### Go Projects
-
-If `go.mod` exists:
-- Format: `go fmt ./...`
-- Lint: `go vet ./...`
-- Test: `go test ./...` or `go test ./path/to/...`
-
-### Rust Projects
-
-If `Cargo.toml` exists:
-- Format: `cargo fmt`
-- Lint: `cargo clippy`
-- Test: `cargo test`
+**Quick reference:**
+- **JS/TS**: Check lock files first (`yarn.lock` → yarn, `pnpm-lock.yaml` → pnpm, `package-lock.json` → npm)
+- **Python**: Check for `uv.lock`, `poetry.lock`, `Pipfile.lock`, or `pyproject.toml`
+- **Pre-commit**: If `.pre-commit-config.yaml` exists, hooks run automatically on commit (no manual run needed)
+- **Makefile**: Check for `lint`, `fmt`, `test` targets
+- **Go/Rust**: Standard tooling (`go fmt`/`cargo fmt`, etc.)
 
 ## Pre-Push Checklist
 
