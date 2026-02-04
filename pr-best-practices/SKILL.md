@@ -144,6 +144,22 @@ Run through this checklist before every push:
 3. **Run the same checks locally** before pushing
 4. **Push the fix commit** (no force push)
 
+### When Addressing Review Comments
+
+1. **Read the comment** and understand what's being requested
+2. **Make the fix** in a new commit
+3. **Push the fix**
+4. **Resolve the comment** using `gh api` (unless asked not to):
+   ```bash
+   gh api graphql -f query='
+     mutation {
+       resolveReviewThread(input: {threadId: "<thread_node_id>"}) {
+         thread { isResolved }
+       }
+     }'
+   ```
+   To get the thread ID, fetch PR review threads first.
+
 ### When Rebasing is Requested
 
 If someone asks you to rebase:
