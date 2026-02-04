@@ -2,13 +2,15 @@
 
 A collection of useful skills for Claude Code agent.
 
-## Usage
+## How to Use
 
 Clone this repository into your Claude skills directory:
 
 ```bash
 git clone git@github.com:assapir/agent-skills.git ~/.claude/skills
 ```
+
+Once cloned, the skills are automatically available in Claude Code. You can invoke them by name (e.g., `/debug`, `/security-review`) or Claude will use them automatically when relevant to your task.
 
 ## Available Skills
 
