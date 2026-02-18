@@ -63,4 +63,5 @@ PGPASSWORD="$DB_PASS" "$PSQL" \
   -U "$DB_USER" \
   -d "$DB_NAME" \
   --no-psqlrc \
+  --pset=pager=off \
   -c "$SQL"
