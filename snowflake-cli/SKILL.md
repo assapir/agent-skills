@@ -88,18 +88,18 @@ Only `--connection` has a short flag (`-c`). The rest are long-flag only.
 `snow` prints a TABLE by default. For programmatic parsing prefer JSON, then pipe through `jq`:
 
 ```sh
-snow --format JSON sql -q "SELECT 1 AS n, 'hi' AS s" | jq .
+snow sql --format JSON -q "SELECT 1 AS n, 'hi' AS s" | jq .
 ```
 
-Supported `--format` values: `TABLE`, `JSON`, `JSON_EXT`, `CSV`. **`--format` is a global flag — put it before `sql`**, not after. Wide tables wrap badly in TABLE format; switch to CSV for those.
+Supported `--format` values: `TABLE`, `JSON`, `JSON_EXT`, `CSV`. **`--format` is a flag on `sql`, not a global flag — put it *after* `sql`**. Placing it before `sql` errors with `No such option: --format`. Wide tables wrap badly in TABLE format; switch to CSV for those.
 
 ```sh
-snow --format CSV sql -q "..." > out.csv
+snow sql --format CSV -q "..." > out.csv
 ```
 
 To extract a single scalar:
 ```sh
-snow --format JSON sql -q "SELECT COUNT(*) AS n FROM <db>.<schema>.<table>" | jq -r '.[0].N'
+snow sql --format JSON -q "SELECT COUNT(*) AS n FROM <db>.<schema>.<table>" | jq -r '.[0].N'
 ```
 (Snowflake upper-cases unquoted identifiers, so JSON keys come back as `N`, not `n`.)
 
