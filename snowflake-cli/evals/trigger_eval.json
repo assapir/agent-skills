@@ -1,0 +1,22 @@
+[
+  {"query": "I need to figure out which merchants had more than 1000 transactions last week. can you check our snowflake?", "should_trigger": true},
+  {"query": "what's the schema of the kyc events table — i forget what columns it has, look it up in the warehouse", "should_trigger": true},
+  {"query": "ok the dbt run is failing because it can't find PUBLIC.MERCHANT_CONFIG. is that table actually there in nsure_data?", "should_trigger": true},
+  {"query": "pull me the top 50 app_ids by event count from RAW_SDK_EVENTS_DATA, then summarize the distribution", "should_trigger": true},
+  {"query": "I think we have an analytics view for monthly active merchants somewhere — can you find it and show me the columns", "should_trigger": true},
+  {"query": "how do i count distinct user ids per day across the last 30 days from our data warehouse, just write me the sql and run it", "should_trigger": true},
+  {"query": "running snow sql gave me 'Object does not exist or not authorized' on a table I know is there. help me figure out what's wrong", "should_trigger": true},
+  {"query": "compare the row counts between the worldpay transaction snapshots from january and july — i think one is much smaller than expected", "should_trigger": true},
+  {"query": "show me everything we know about app id 'acme-corp-prod' across our production tables in nsure_data", "should_trigger": true},
+  {"query": "i need a csv export of merchant_config for the security review tomorrow — can you grab it from the warehouse", "should_trigger": true},
+  {"query": "the postgres connection from the apps service is timing out, can you check the read replica logs and figure out why", "should_trigger": false},
+  {"query": "i need to query the production database to figure out which orders were affected by the bug yesterday — they're in the orders table on the postgres prod-blue cluster", "should_trigger": false},
+  {"query": "what tables does the graphql api expose to clients in the merchant-portal repo? need to know which fields are available", "should_trigger": false},
+  {"query": "explain how snowflake's automatic clustering keys work to me, i'm trying to understand the docs and decide if we need them", "should_trigger": false},
+  {"query": "set up a cron job that runs every 6 hours to ingest new merchants from the partner API into our database", "should_trigger": false},
+  {"query": "the airflow dag for snowflake_ingest is failing at the load_orders task — can you check the airflow logs at airflow.internal/dags/snowflake_ingest", "should_trigger": false},
+  {"query": "rename the column app_id to merchant_id in our typescript types file at packages/shared/src/types/order.ts", "should_trigger": false},
+  {"query": "is the `snow` cli even installed on the build server? we need it for the new ingestion job in CI", "should_trigger": false},
+  {"query": "i have a sample CSV of orders in ~/Downloads/orders.csv from yesterday's incident — can you parse it and tell me how many rows have status='REJECTED'", "should_trigger": false},
+  {"query": "we need to add a feature flag for the new merchant onboarding flow so we can enable it for 10% of partners first", "should_trigger": false}
+]

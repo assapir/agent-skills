@@ -1,0 +1,33 @@
+{
+  "skill_name": "snowflake-cli",
+  "evals": [
+    {
+      "id": 0,
+      "name": "discover-tables-by-keyword",
+      "prompt": "What tables in NSURE_DATA have something to do with merchants or apps? Use Snowflake to find out.",
+      "expected_output": "Model uses `snow sql` with SHOW TABLES (LIKE filter or full listing) before claiming any specific table names. Lists actual matching tables, not invented ones.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "row-count-largest-table",
+      "prompt": "How many rows are in the largest table you can see in our Snowflake?",
+      "expected_output": "Model discovers visible tables first (SHOW TABLES / SHOW SCHEMAS), identifies a candidate, runs COUNT(*) on it. Does not run SELECT * without LIMIT.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "describe-orders-or-transactions-table",
+      "prompt": "Show me the columns of our orders or transactions table in Snowflake — whichever exists.",
+      "expected_output": "Model first locates the table via SHOW TABLES LIKE / INFORMATION_SCHEMA, then runs DESC TABLE on the qualified name. Does not invent column names.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "diagnose-no-data-role-issue",
+      "prompt": "I ran `snow sql -q \"SHOW DATABASES\"` and got an empty result. What's wrong and how do I fix it?",
+      "expected_output": "Model identifies that the role (PUBLIC) lacks grants, suggests checking CURRENT_AVAILABLE_ROLES() and switching role with --role <ROLE> (e.g. ENGINEER/ANALYST). Mentions the connections.toml `role` field as a persistent fix.",
+      "files": []
+    }
+  ]
+}

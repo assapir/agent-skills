@@ -38,6 +38,14 @@ Security review checklist based on OWASP Top 10, covering injection, authenticat
 
 Guide for creating new skills with minimal interaction. Includes Python scripts for initialization, validation, and packaging. (From [anthropics/skills](https://github.com/anthropics/skills))
 
+### db-query
+
+Query the Balance prod or sandbox PostgreSQL database via `psql`. Handles Vault authentication and credential retrieval automatically (requires `GITHUB_TOKEN`).
+
+### snowflake-cli
+
+Run SQL against Snowflake using the `snow` CLI. Covers schema discovery, output formats, connection switching, and common gotchas. Requires the Snowflake CLI installed and `~/.snowflake/connections.toml` configured — see the skill's Setup section.
+
 ### worktree-cleanup
 
 Automated daily cleanup of dead git worktrees and merged branches. Runs on first wake/login on workdays (configurable). Includes install script for macOS launchd.
