@@ -46,6 +46,10 @@ Query the Balance prod or sandbox PostgreSQL database via `psql`. Handles Vault 
 
 Run SQL against Snowflake using the `snow` CLI. Covers schema discovery, output formats, connection switching, and common gotchas. Requires the Snowflake CLI installed and `~/.snowflake/connections.toml` configured — see the skill's Setup section.
 
+### cbq-query
+
+Run SQL++ (formerly N1QL) against a Couchbase cluster using the `cbq` shell. Hard read-only — the wrapper rejects INSERT/UPDATE/UPSERT/DELETE/MERGE/CREATE/DROP/ALTER/TRUNCATE/RENAME/BUILD/GRANT/REVOKE before they reach the cluster. Designed to run via a subagent so multi-MB result envelopes never enter the main agent's context. Requires `cbq`, `jq`, and `~/.config/cbq-skill/config.json` — see the skill's Setup section.
+
 ### worktree-cleanup
 
 Automated daily cleanup of dead git worktrees and merged branches. Runs on first wake/login on workdays (configurable). Includes install script for macOS launchd.
