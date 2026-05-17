@@ -1,0 +1,23 @@
+{
+  "skill_name": "cbq-query",
+  "evals": [
+    {
+      "id": 0,
+      "name": "list-keyspaces",
+      "prompt": "i need to figure out what buckets exist in our couchbase cluster - can you give me a list?",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "count-analytics-data",
+      "prompt": "how many documents are in the analytics_data bucket in couchbase?",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "infer-raw-data",
+      "prompt": "trying to understand the shape of documents in our couchbase raw_data bucket - what fields do they typically have and what types?",
+      "files": []
+    }
+  ]
+}
